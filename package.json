@@ -1,6 +1,9 @@
 {
   "name": "audiohook-fargate",
   "version": "1.0.2",
+  "engines": {
+    "node": "12.x"
+  },
   "private": true,
   "author": "felix.wyss@genesys.com",
   "license": "MIT",
