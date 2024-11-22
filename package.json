@@ -8,7 +8,7 @@
   "main": "src/index.ts",
   "scripts": {
     "setup": "npm install",
-    "start": "ts-node src/index.ts",
+    "start": "npm install && ts-node src/index.ts",
     "build": "tsc --project tsconfig.json --pretty && npm run lint",
     "buildcheck": "tsc --project tsconfig.json --pretty --noEmit && npm run lint",
     "lint": "eslint . --ext .ts --cache --max-warnings 0",
