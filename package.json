@@ -22,7 +22,8 @@
     "clean": "rm -r build/ ; rm -r cdk.out/ ; npm run clean --prefix app ; npm run clean --prefix client",
     "watch": "tsc -w",
     "test": "jest --verbose",
-    "cdk": "cdk"
+    "cdk": "cdk",
+    "start": "npm run start"
   },
   "dependencies": {
     "aws-cdk-lib": "^2.39.0",
