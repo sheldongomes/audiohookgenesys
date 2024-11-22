@@ -23,7 +23,7 @@
     "watch": "tsc -w",
     "test": "jest --verbose",
     "cdk": "cdk",
-    "start": "cd app ; npm install; npm run start"
+    "start": "cd app ; npm install ts-node; npm install; npm run start"
   },
   "dependencies": {
     "aws-cdk-lib": "^2.39.0",
