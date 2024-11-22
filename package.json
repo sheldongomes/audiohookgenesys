@@ -23,7 +23,7 @@
     "watch": "tsc -w",
     "test": "jest --verbose",
     "cdk": "cdk",
-    "start": "npm run start"
+    "start": "npm start -- --uri wss://audiohook.example.com/api/v1/audiohook/ws"
   },
   "dependencies": {
     "aws-cdk-lib": "^2.39.0",
