@@ -1,9 +1,8 @@
 {
   "compilerOptions": {
     "target": "es2020",
-    "module": "commonjs",
     "lib": ["es2020"],
-    "declaration": true,
+    "module": "commonjs",
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -16,18 +15,18 @@
     "noFallthroughCasesInSwitch": false,
     "noPropertyAccessFromIndexSignature": true,
     "esModuleInterop": true,
-    "inlineSourceMap": true,
-    "inlineSources": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "sourceMap": true,
+    "declaration": true,
+    "noEmitOnError": true,
     "experimentalDecorators": true,
-    "exactOptionalPropertyTypes": false,
-    "strictPropertyInitialization": true,
-    "typeRoots": ["./node_modules/@types"],
-    "outDir": "./build"
+    "strictPropertyInitialization": false,
+    "typeRoots": ["./node_modules/@types"],    
+    "outDir": "./dist"
   },
-  "exclude": [
-    "app/**",
-    "build/**",
-    "cdk.out",
-    "client/**"
+  "include": [
+    "src/**/*",
+    "audiohook/**/*"
   ]
 }
