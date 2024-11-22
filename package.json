@@ -1,11 +1,15 @@
 {
   "name": "audiohook-sample-server",
   "version": "1.0.2",
+  "engines" : { 
+    "node" : "18.x"
+  },
   "private": true,
   "author": "felix.wyss@genesys.com",
   "license": "MIT",
   "description": "",
   "main": "src/index.ts",
+  
   "scripts": {
     "setup": "npm install",
     "start": "npm install && ts-node src/index.ts",
