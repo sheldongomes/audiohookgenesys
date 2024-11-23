@@ -7,10 +7,10 @@ import {
     TranscriptToken,
     TranscriptTokenType,
     LanguageCode
-} from '../../audiohook/src/protocol';
+} from '../protocol';
 import { VoiceEvent } from './voice-activity-detection/voice-event';
 import { v4 as uuid } from 'uuid';
-import { StreamDuration } from '../../audiohook';
+import { StreamDuration } from '../utils';
 
 class Token {
     type: TranscriptTokenType;

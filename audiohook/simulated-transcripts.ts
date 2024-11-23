@@ -12,7 +12,7 @@ import {
     StreamDuration,
     isValidLanguageCode,
     SupportedLanguages
-} from '../../audiohook';
+} from '../audiohook';
 import ByteBuffer from 'bytebuffer';
 import { VoiceEvent } from './voice-activity-detection/voice-event';
 import { makeTranscript } from './make-transcript';
