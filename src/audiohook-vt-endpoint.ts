@@ -72,7 +72,6 @@ export const addAudiohookVoiceTranscriptionRoute = (fastify: FastifyInstance, pa
             };
         });
 
-        const simulatedTranscripts = new SimulatedTranscripts(session);
 
         const lifecycleToken = fastify.lifecycle.registerSession(() => {
             session.logger.info('Service shutdown announced, trigger reconnect');

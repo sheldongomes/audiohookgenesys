@@ -319,7 +319,7 @@ class ClientSessionImpl extends EventEmitter implements ClientSession {
     }
 
     resuming(start: Duration, discarded: Duration): Promise<void> {
-        console.log(start + discarded)
+        console.log(start + discarded);
         return new Promise((resolve) => {
             this.mediaSource.resume();
             resolve();

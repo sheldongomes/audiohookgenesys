@@ -142,7 +142,7 @@ export class SimulatedTranscripts {
         session.on('paused', pausedHandler);
     
         const resumedHandler = (resumedMessage: ResumedParameters) => {
-            console.log(resumedMessage)
+            console.log(resumedMessage);
             this.updateLanguage(session);
             session.on('audio', audioHandler);
         };
