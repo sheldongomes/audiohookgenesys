@@ -12,6 +12,7 @@
   
   "scripts": {
     "setup": "npm install",
+    "web": "npm install && ts-node src/index.ts",
     "start": "npm install && ts-node src/index.ts",
     "build": "tsc --project tsconfig.json --pretty && npm run lint",
     "buildcheck": "tsc --project tsconfig.json --pretty --noEmit && npm run lint",
