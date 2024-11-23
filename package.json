@@ -11,6 +11,7 @@
   "main": "src/index.ts",
   
   "scripts": {
+    "heroku-postbuild": "npm install --include=dev"
     "setup": "npm install",
     "web": "npm install ts-node && npm install && ts-node src/index.ts",
     "start": "npm install ts-node && npm install && ts-node src/index.ts",
