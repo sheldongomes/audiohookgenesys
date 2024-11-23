@@ -2,7 +2,7 @@ import ByteBuffer from 'bytebuffer';
 import { VoiceEvent } from './voice-event';
 import { EventType } from './event-type';
 import { EnergyCalculator } from './energy-calculator';
-import { MediaChannelId } from '../../../audiohook';
+import { MediaChannelId } from '../src/protocol';
 
 export class VoiceActivityDetector {
     private channelId: MediaChannelId;
