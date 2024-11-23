@@ -110,10 +110,6 @@ const secondsToMilli = (timeInSeconds: number) => {
     return Math.round(timeInSeconds * 1000);
 };
 
-const milliSecondsToSeconds = (timeInMilliSeconds: number) => {
-    return timeInMilliSeconds/1000;
-};
-
 const makeInterpretation = (transcriptInterpretationType: TranscriptInterpretationType, startPosition: StreamDuration, duration: StreamDuration, languageCode: LanguageCode) => {
     const interpretation: TranscriptInterpretation = {
         type: transcriptInterpretationType,
