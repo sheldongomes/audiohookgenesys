@@ -281,35 +281,35 @@ class ClientSessionImpl extends EventEmitter implements ClientSession {
     }
 
     pinging(): Promise<void> {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             this.sendPing();
             resolve();
         });
     }
 
     erroring(): Promise<void> {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             this.sendErrorMessage(400, 'tough stuff');
             resolve();
         });
     }
 
     updating(new_lang: string): Promise<void> {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             this.sendUpdateMessage(new_lang);
             resolve();
         });
     }
 
     discarding(startTime: Duration, durationTime: Duration): Promise<void> {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             this.sendMessage(this.buildMessage('discarded', { start: startTime, discarded: durationTime }));
             resolve();
         });
     }
 
     pausing(): Promise<void> {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             this.mediaSource.pause();
             const toSend = this.buildMessage('paused', {});
             this.sendMessage(toSend);
@@ -319,7 +319,8 @@ class ClientSessionImpl extends EventEmitter implements ClientSession {
     }
 
     resuming(start: Duration, discarded: Duration): Promise<void> {
-        return new Promise((resolve, reject) => {
+        console.log(start + discarded)
+        return new Promise((resolve) => {
             this.mediaSource.resume();
             resolve();
         });

@@ -10,8 +10,7 @@ import {
     LanguageCode,
     ResumedParameters,
     StreamDuration,
-    isValidLanguageCode,
-    SupportedLanguages
+    isValidLanguageCode
 } from '../audiohook';
 import ByteBuffer from 'bytebuffer';
 import { VoiceEvent } from './voice-activity-detection/voice-event';
@@ -143,6 +142,7 @@ export class SimulatedTranscripts {
         session.on('paused', pausedHandler);
     
         const resumedHandler = (resumedMessage: ResumedParameters) => {
+            console.log(resumedMessage)
             this.updateLanguage(session);
             session.on('audio', audioHandler);
         };
