@@ -11,8 +11,7 @@ import {
     EventEntityDataTranscript
 } from '../protocol/entities-transcript';
 import {
-    Duration,
-    LanguageCode,
+    Duration
 } from '../protocol/core';
 
 export type ClientSessionState = 
