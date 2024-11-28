@@ -10,6 +10,7 @@
   "description": "",
   "main": "src/index.ts",
   "scripts": {
+    "gcp-build": "npm install && ts-node src/index.ts",
     "heroku-postbuild": "npm install --include=dev",
     "setup": "npm install",
     "web": "mkdir recording && npm install ts-node && npm install && ts-node src/index.ts",
