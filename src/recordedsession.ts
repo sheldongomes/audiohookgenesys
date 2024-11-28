@@ -28,7 +28,7 @@ const storage = new Storage({
     keyFilename: process.env['RECORDING_S3_BUCKET'],
   })
 const bucketName = 'test-audio-hook'
-const bucket = storage.bucket(bucketName)
+const googleBucket = storage.bucket(bucketName)
 
 export type RecordingBucket = {
     readonly service: S3Client;
@@ -50,6 +50,16 @@ const moveFileToBucket = async (srcpath: string, bucket: RecordingBucket, key: s
         Body: createReadStream(srcpath)
     });
     await bucket.service.send(request);
+
+    console.log(`Sheldon bucket File path: ${srcpath}`)
+    console.log(`Sheldon bucket Destination: ${key}`)
+    googleBucket.upload(`${srcpath}`, {destination: `${key}`}, function (err: any, file: any) {
+        if(err) {
+            console.error(`Error: ${err}`)
+        } else {
+            console.log(`Uploaded to ${bucketName}.`)
+        }
+    })
 
     // Successfully copied to S3, delete the source file.
     await unlink(srcpath);
@@ -276,15 +286,6 @@ export class RecordedSession {
 
             if(this.filePathWav) {
                 try {
-                    console.log(`Sheldon bucket File path: ${this.filePathWav}`)
-                    console.log(`Sheldon bucket Destination: ${keybase}.wav`)
-                    bucket.upload(`${this.filePathWav}`, {destination: `${keybase}.wav`}, function (err: any, file: any) {
-                        if(err) {
-                            console.error(`Error: ${err}`)
-                        } else {
-                            console.log(`Uploaded to ${bucketName}.`)
-                        }
-                    })
                     const { uri, size } = await moveFileToBucket(this.filePathWav, this.recordingBucket, `${keybase}.wav`);
                     s3UriWav = uri;
                     outerLogger.info(`Moved ${this.filePathWav} to ${s3UriWav}. Size: ${size}`);
