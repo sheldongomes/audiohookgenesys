@@ -47,8 +47,8 @@ const moveFileToBucket = async (srcpath: string, bucket: RecordingBucket, key: s
     // Successfully copied to S3, delete the source file.
     await unlink(srcpath);
 
-    return { uri: `s3://${bucket.name}/${key}`, size };
-    //return { uri: 's3://arn:aws:s3:sa-east-1:024153147757:accesspoint/heroku/metadata/', size}
+    //return { uri: `s3://${bucket.name}/${key}`, size };
+    return { uri: 's3://arn:aws:s3:sa-east-1:024153147757:accesspoint/heroku/metadata/', size}
 };
 
 
