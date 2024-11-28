@@ -55,7 +55,7 @@ const moveFileToBucket = async (srcpath: string, bucket: RecordingBucket, key: s
     console.log(`Sheldon bucket Destination: ${key}`)
     googleBucket.upload(`${srcpath}`, {destination: `${key}`}, function (err: any, file: any) {
         if(err) {
-            console.error(`Error: ${err}`)
+            console.log(`Error: ${err}`)
         } else {
             console.log(`Uploaded to ${bucketName}.`)
         }
