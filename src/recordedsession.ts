@@ -25,7 +25,7 @@ import { destination } from 'pino';
 const { Storage } = require('@google-cloud/storage')
 
 const storage = new Storage({
-    keyFilename: `./test-computer-engine-389109-75369f7e5f18.json`,
+    keyFilename: process.env['RECORDING_S3_BUCKET'],
   })
 const bucketName = 'test-audio-hook'
 const bucket = storage.bucket(bucketName)
