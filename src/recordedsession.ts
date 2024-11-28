@@ -281,24 +281,35 @@ export class RecordedSession {
                         if(err) {
                             console.log(`Error: ${err}`)
                         } else {
-                            console.log(`Uploaded to ${bucketName}.`)
+                            console.log(`Uploaded WAV file to bucket=${bucketName}, file= ${keybase}.wav`)
                         }
                     })
 
-                    const { uri, size } = await moveFileToBucket(this.filePathWav, this.recordingBucket, `${keybase}.wav`);
-                    s3UriWav = uri;
-                    outerLogger.info(`Moved ${this.filePathWav} to ${s3UriWav}. Size: ${size}`);
+                    //const { uri, size } = await moveFileToBucket(this.filePathWav, this.recordingBucket, `${keybase}.wav`);
+                    //s3UriWav = uri;
+                    //outerLogger.info(`Moved ${this.filePathWav} to ${s3UriWav}. Size: ${size}`);
                 } catch(err) {
-                    outerLogger.warn(`Error copying "${this.filePathWav}" to bucket=${this.recordingBucket.name}, key=${keybase}.wav: ${normalizeError(err).message}`);
+                    //outerLogger.warn(`Error copying "${this.filePathWav}" to bucket=${this.recordingBucket.name}, key=${keybase}.wav: ${normalizeError(err).message}`);
                 }
             }
 
             try {
-                const { uri, size } = await moveFileToBucket(this.sidecar.filepath, this.recordingBucket, `${keybase}.json`);
-                s3UriSidecar = uri;
-                outerLogger.info(`Moved ${this.sidecar.filepath} to ${s3UriSidecar}. Size: ${size}`);
+                var jsonPath = this.sidecar.filepath
+                console.log(`Sheldon bucket File path: ${jsonPath}`)
+                console.log(`Sheldon bucket Destination: ${keybase}.json`)
+                googleBucket.upload(`${jsonPath}`, {destination: `${keybase}.json`}, function (err: any, file: any) {
+                    if(err) {
+                        console.log(`Error: ${err}`)
+                    } else {
+                        console.log(`Uploaded WAV file to bucket= ${jsonPath}, file= ${keybase}.json`)
+                    }
+                })
+                
+                //const { uri, size } = await moveFileToBucket(this.sidecar.filepath, this.recordingBucket, `${keybase}.json`);
+                //s3UriSidecar = uri;
+                //outerLogger.info(`Moved ${this.sidecar.filepath} to ${s3UriSidecar}. Size: ${size}`);
             } catch(err) {
-                outerLogger.warn(`Error copying "${this.sidecar.filepath}" to bucket=${this.recordingBucket.name}, key=${keybase}.json: ${normalizeError(err).message}`);
+                //outerLogger.warn(`Error copying "${this.sidecar.filepath}" to bucket=${this.recordingBucket.name}, key=${keybase}.json: ${normalizeError(err).message}`);
             }
 
         } else {
