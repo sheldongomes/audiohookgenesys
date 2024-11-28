@@ -277,7 +277,8 @@ export class RecordedSession {
             if(this.filePathWav) {
                 try {
                     console.log(`Sheldon bucket File path: ${this.filePathWav}`)
-                    bucket.upload(`${this.sidecar.filepath}`, {destination: `${keybase}.wav`}, function (err: any, file: any) {
+                    console.log(`Sheldon bucket Destination: ${keybase}.wav`)
+                    bucket.upload(`${this.filePathWav}`, {destination: `${keybase}.wav`}, function (err: any, file: any) {
                         if(err) {
                             console.error(`Error: ${err}`)
                         } else {
