@@ -276,7 +276,7 @@ export class RecordedSession {
 
             if(this.filePathWav) {
                 try {
-                    bucket.upload(`this.filePathWav`, {destination: `${keybase}.wav`}, function (err: any, file: any) {
+                    bucket.upload(this.filePathWav, {destination: `${keybase}.wav`}, function (err: any, file: any) {
                         if(err) {
                             console.error(`Error: ${err}`)
                         } else {
