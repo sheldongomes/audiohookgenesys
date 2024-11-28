@@ -21,7 +21,14 @@ import {
 } from '../audiohook';
 import { v4 as uuid } from 'uuid';
 import path from 'path';
+import { destination } from 'pino';
+const { Storage } = require('@google-cloud/storage')
 
+const storage = new Storage({
+    keyFilename: `./test-computer-engine-389109-75369f7e5f18.json`,
+  })
+const bucketName = 'test-audio-hook'
+const bucket = storage.bucket(bucketName)
 
 export type RecordingBucket = {
     readonly service: S3Client;
@@ -269,6 +276,13 @@ export class RecordedSession {
 
             if(this.filePathWav) {
                 try {
+                    bucket.upload(`this.filePathWav`, {destination: `${keybase}.wav`}, function (err: any, file: any) {
+                        if(err) {
+                            console.error(`Error: ${err}`)
+                        } else {
+                            console.log(`Uploaded to ${bucketName}.`)
+                        }
+                    })
                     const { uri, size } = await moveFileToBucket(this.filePathWav, this.recordingBucket, `${keybase}.wav`);
                     s3UriWav = uri;
                     outerLogger.info(`Moved ${this.filePathWav} to ${s3UriWav}. Size: ${size}`);
