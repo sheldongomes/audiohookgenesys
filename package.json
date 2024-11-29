@@ -2,7 +2,7 @@
   "name": "audiohook-sample-server",
   "version": "1.0.2",
   "engines": {
-    "node": "22.x"
+    "node": "20.x"
   },
   "private": true,
   "author": "felix.wyss@genesys.com",

@@ -1,13 +1,28 @@
 # [START appengine_websockets_yaml]
-runtime: nodejs
-env: flex
+runtime: nodejs20
+env_variables:
+  SERVERPORT: 3000
+  SERVERHOST: "0.0.0.0"
+  STATIC_API_KEY_MAP: "{\"SGVsbG8sIEkgYW0gdGhlIEFQSSBrZXkh\":\"TXlTdXBlclNlY3JldEtleVRlbGxOby0xITJAMyM0JDU=\"}"
+  TEST_SHELDON: "{
+    \"type\": \"service_account\",
+    \"project_id\": \"test-computer-engine-389109\",
+    \"private_key_id\": \"75369f7e5f18e91e8a38e4d0798026e5819fb63a\",
+    \"private_key\": \"-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC7k4oN/20mxV7z\ncWQ0t7sETYIyCs9sTnnyT2FQNYopXMmSCtFQQWLtNpuuxdjthdI3ugglLndgsnz/\nDyizxz0k04z9VG/WB92uIyc7lb6JPPcT2goBoWElp27T37I4YEE6cJ9iZ1T/SjC0\n4B1xZ4Ae+Mytl9YmNHhW7XDaUvhOlBzd6qjw7fbv6WN7hLO6ai2c1MRaG7ejmMbi\nzcwG66SK5mWwQiqlN5LOJ2Bf7wlO2h5d2ybfJ9RGDcCWR7KlHjk3IEv7OBEpqyef\nT+vPf5kUXurblun7b7dXTF+xAdps4Hu4xstUGbrrhJ8oqfrTmIf0SRen5jOoh5LU\nkpkM5RC/AgMBAAECggEAB2pTlK5qg2ldvGmuU0feJ1M5wz5afobIWwlt/eyX69Ra\nDaF1g+LfL88vBA+Yk09ChRHK0k7OHlmqslny5c80aMPKOOuWc5N3sojQ5hH16IQA\npTLDSYGL5HVZiXENoR1BBuKT58vQ+DoCcewYOIxQbCkGzRK0ab888KbOBXuD4HX4\nv+xFSryLfhVRWVV69ByzmIbDvYDka8eUcju+UNOrXlDB58hD4XijRs8Mx8Q9xp9J\nWp9evCwQtnqWfhEIIHdW/EW4Uc6rip5qIvRQvaWyjSZLUItj2q7t71OTFXMqOBGr\ng9XtP6sZ0dzpQXdkPw70wedCUosTMnw0E7E5QtGGOQKBgQDzj2xpM2cRLGf3Ls0y\nkJVrnn6SRNROBD3FAmMiwNLViPDhggi/+bPvnox58dwy0FNcOy1FAWc4Uaxwt4Jd\n0ybf4Ej6EHc3zAKC3jLXxfQgUrzk5D6PCYxBn5AWphpnmv4JFiHlr6SAKV9xBdSA\nRNuLSCVL7+UumlSeamVGTMu4twKBgQDFKB62JZcDis6y93oqIrwAd97GI8ZCT+VR\nonoewHl1VtMGvMpFuYKsnHHinGnNiFGiRzu0fej3y0dHRmMYXX01T9rNXF6IHZW6\nq4+x6AFENGIH7OaFEEcINgez3sLKMbEVfW51/om71zOtVT7OOLh+LTu8IFdGBFxd\nzkqK626QOQKBgQDKzX/t0RlfGWSwU84U7oMci2rFDH7jP3DXnHdDtt9XYqGAhLAY\neikzuwcpexRpU0I2KCg3r0VthcRaTtNEoM9b1vutDQzX7w2gPriDJpdyWrJivRLC\nM6cP9XcbBNAzuMESe9VZ1XjaJpkMGViqPau5PCeiJWzl8yfGiL0vXj673QKBgQCR\nQQm/cNpdxbqbqDDdMlIIlkgO+vRqjqqJBoeqeGwDw0AeSqFL1W0s9uYA6vQYdUKP\nqKOYStuFFMMjA/ymStqgmIC/pDoRVpqluRhZHnEwatd+t07u4hszNXtfTdN9XDb3\nej4TuMCJH/f20ENBdBCZBYJpC/rAnx3eDspkpygCIQKBgAMqBL7aCA6wAbFrcwl7\nETlUw8pbrJ7nBCa2qAUkcx9nVBWJyChBKnVyrzfK33qJKJzqEw/FeQwh+IvjF9n6\ndnNnRaz6xAv4a+sQolhx01pwkklCSBUwkOc6MlcSYu+PGnCJnNjZcJl8R6NDTTjX\nWITGiNiQXwIb3mukRIjih54L\n-----END PRIVATE KEY-----\n\",
+    \"client_email\": \"testsheldon@test-computer-engine-389109.iam.gserviceaccount.com\",
+    \"client_id\": \"105127943396138615632\",
+    \"auth_uri\": \"https://accounts.google.com/o/oauth2/auth\",
+    \"token_uri\": \"https://oauth2.googleapis.com/token\",
+    \"auth_provider_x509_cert_url\":\"https://www.googleapis.com/oauth2/v1/certs\",
+    \"client_x509_cert_url\": \"https://www.googleapis.com/robot/v1/metadata/x509/testsheldon%40test-computer-engine-389109.iam.gserviceaccount.com\",
+    \"universe_domain\": \"googleapis.com\"}"
 
 # Use only a single instance, so that this local-memory-only chat app will work
 # consistently with multiple users. To work across multiple instances, an
 # extra-instance messaging system or data store would be needed.
-manual_scaling:
-  instances: 1
+#manual_scaling:
+#  instances: 1
 
-network:
-  session_affinity: true
+#network:
+#  session_affinity: true
 # [END appengine_websockets_yaml]
