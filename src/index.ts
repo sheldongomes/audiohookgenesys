@@ -51,7 +51,7 @@ server.register(serviceLifecylePlugin);
 
 
 server.listen({
-    port: parseInt(process.env?.['SERVERPORT'] ?? '3000'),
+    port: parseInt(process.env?.['PORT'] ?? '3000'),
     host: process.env?.['SERVERHOST'] ?? '127.0.0.1'
 }).then(() => {
     server.log.info(`Routes: \n${server.printRoutes()}`);
